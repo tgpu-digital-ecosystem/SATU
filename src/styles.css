@@ -71,3 +71,15 @@ main{padding:20px 20px 22px}
 .heroLogoWrap{position:absolute;right:-14px;bottom:-24px;width:155px;height:155px;border-radius:34px;background:#fff;border:4px solid #d9ae3b;padding:8px;box-shadow:0 14px 28px #003d2750}
 .heroLogo{width:100%;height:100%;border:0!important;border-radius:25px!important;transform:none!important;box-shadow:none!important}
 @media(max-width:390px){header{min-height:92px}.brandmark{width:48px;height:48px;flex-basis:48px}.satubrand b{font-size:28px}.satubrand span{font-size:10px}.brandlockup small{font-size:13px;max-width:230px}main{padding:16px}.brandBanner{border-radius:20px;margin-top:2px;margin-bottom:20px}.hero{min-height:390px;padding:34px 26px;border-radius:28px}.hero h1{font-size:45px;margin-top:30px}.heroLogoWrap{width:132px;height:132px;right:-10px;bottom:-20px}}
+
+
+/* SATU private no-cost decision guide: informational, not financial or tax advice */
+.satuCoach{border-color:#cedfce;background:linear-gradient(145deg,#fff 12%,#f1f8f2 100%);gap:12px;box-shadow:0 15px 32px #0b523117}
+.satuCoach h2{font-size:1.25rem;line-height:1.4;margin:0;color:#134f36}
+.satuCoachTag{font-size:.68rem;font-weight:850;letter-spacing:.11em;color:#95713c}
+.satuCoachFigures{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.satuCoachFigures div{min-width:0;background:#f7faf6;border:1px solid #cddccf;border-radius:12px;padding:14px}
+.satuCoachFigures small{font-size:.74rem;font-weight:700;line-height:1.4;display:block;color:#456553}
+.satuCoachFigures strong{display:block;overflow-wrap:anywhere;font-size:clamp(1rem,3.8vw,1.4rem);font-variant-numeric:tabular-nums;margin-top:9px;color:#12472f}
+.satuCoach>p{color:#32513f;line-height:1.7}.satuCoach .satuCoachCaution{background:#f6f1e7;border-inline-start:3px solid #b78b48;border-radius:4px;padding:12px;font-size:.79rem}
+@media(max-width:350px){.satuCoachFigures{grid-template-columns:1fr}}
