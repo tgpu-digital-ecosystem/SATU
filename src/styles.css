@@ -83,3 +83,13 @@ main{padding:20px 20px 22px}
 .satuCoachFigures strong{display:block;overflow-wrap:anywhere;font-size:clamp(1rem,3.8vw,1.4rem);font-variant-numeric:tabular-nums;margin-top:9px;color:#12472f}
 .satuCoach>p{color:#32513f;line-height:1.7}.satuCoach .satuCoachCaution{background:#f6f1e7;border-inline-start:3px solid #b78b48;border-radius:4px;padding:12px;font-size:.79rem}
 @media(max-width:350px){.satuCoachFigures{grid-template-columns:1fr}}
+
+/* SATU hero: fully visible official logo and balanced tablet/mobile card. */
+.heroLogoWrap{right:18px!important;bottom:18px!important;width:124px!important;height:124px!important;padding:12px!important;border-radius:25px!important;background:#fff!important;border:3px solid #d9ae3b!important;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 10px 24px #003d2730!important}
+.heroLogo{display:block;width:100%!important;height:100%!important;object-fit:contain!important;border:0!important;border-radius:12px!important;transform:none!important;box-shadow:none!important}
+.hero{padding-bottom:148px!important;min-height:400px}
+.herocopy{max-width:100%!important}
+.hero h1{font-size:clamp(35px,10vw,48px);max-width:340px;line-height:1.1;margin:28px 0 18px}
+.hero p{max-width:330px}
+.brandBanner{margin-bottom:16px!important}
+@media(max-width:390px){.hero{min-height:375px;padding:30px 24px 132px!important}.heroLogoWrap{width:105px!important;height:105px!important;right:15px!important;bottom:14px!important}.hero h1{font-size:clamp(34px,10vw,43px)}}
