@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {validBackup,validInvoice,validNote} from '../src/backup.ts';
-const sample=()=>({version:2,lang:'ar',profile:{business:'متجر',owner:'Owner',phone:'',payment:''},notes:[{id:1,name:'Aisyah',amount:25}],invoices:[{id:2,customer:'Ali',amount:40,status:'Unpaid',items:[{id:1,description:'كتاب',qty:2,unitPrice:20}]}]});
+const sample=()=>({version:2,lang:'ar',profile:{business:'متجر',owner:'Owner',phone:'',payment:''},notes:[{id:1,name:'Aisyah',phone:'',detail:'',status:'Belum Bayar',amount:25}],invoices:[{id:2,customer:'Ali',date:'2026-10-30',amount:40,status:'Unpaid',items:[{id:1,description:'كتاب',qty:2,unitPrice:20}]}]});
 test('backup JSON round trip retains records and Arabic language',()=>{const restored=JSON.parse(JSON.stringify(sample()));assert.equal(validBackup(restored),true);assert.deepEqual(restored,sample())});
 test('malformed nested items are rejected',()=>{const v=sample();v.invoices[0].items[0].qty=-1;assert.equal(validBackup(v),false)});
 test('invalid profile rejects entire restore',()=>{const v=sample();v.profile.owner=undefined;assert.equal(validBackup(v),false)});
