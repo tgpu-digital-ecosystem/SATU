@@ -1,4 +1,4 @@
-import {MAX_BACKUP_BYTES,validBackup,type BackupData} from './backup';
+import {MAX_BACKUP_BYTES,validBackup,type BackupData} from './backup.ts';
 
 export const restoreBackupStorage=(storage:Pick<Storage,'getItem'|'setItem'|'removeItem'>,data:BackupData):void=>{
  if(!validBackup(data))throw new Error('Invalid backup data');
