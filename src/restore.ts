@@ -1,6 +1,7 @@
-import type {BackupData} from './backup';
+import {validBackup,type BackupData} from './backup';
 
 export const restoreBackupStorage=(storage:Pick<Storage,'getItem'|'setItem'|'removeItem'>,data:BackupData):void=>{
+ if(!validBackup(data))throw new Error('Invalid backup data');
  const entries:[string,string][]=[['satu-notes',JSON.stringify(data.notes)],['satu-invoices',JSON.stringify(data.invoices)]];
  if(data.profile)entries.push(['satu-profile',JSON.stringify(data.profile)]);
  if(data.lang)entries.push(['satu-language',data.lang]);
