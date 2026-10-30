@@ -23,7 +23,7 @@ const getItems=(x:Invoice):LineItem[]=>x.items?.length?x.items:[{id:1,descriptio
 const recalc=(x:Invoice,items:LineItem[])=>Math.max(0,items.reduce((s,a)=>s+Number(a.qty||0)*Number(a.unitPrice||0),0)-Number(x.discount||0)+Number(x.delivery||0));
 const addItem=(id:number)=>{const i=invoices.map(x=>{if(x.id!==id)return x;const items=[...getItems(x),{id:Date.now(),description:'',qty:1,unitPrice:0}];return{...x,items,amount:recalc(x,items)}});setInvoices(i);persist(notes,i)};
 const updateItem=(id:number,itemId:number,key:'description'|'qty'|'unitPrice',value:string|number)=>{const i=invoices.map(x=>{if(x.id!==id)return x;const items=getItems(x).map(a=>a.id===itemId?{...a,[key]:value}:a) as LineItem[];return{...x,items,amount:recalc(x,items)}});setInvoices(i);persist(notes,i)};
-const removeItem=(id:number,itemId:number)=>{const i=invoices.map(x=>{if(x.id!==id)return x;const items=getItems(x).filter(a=>a.id!==itemId);return{...x,items,amount:recalc(x,items)}});setInvoices(i);persist(notes,i)};
+const removeItem=(id:number,itemId:number)=>{const i=invoices.map(x=>{if(x.id!==id)return x;const current=getItems(x);if(current.length<=1)return x;const items=current.filter(a=>a.id!==itemId);return{...x,items,amount:recalc(x,items)}});setInvoices(i);persist(notes,i)};
 const updateNote=(id:number,key:keyof Note,value:string|number)=>{const n=notes.map(x=>x.id===id?{...x,[key]:value}:x);setNotes(n);persist(n,invoices)};
 const markPaid=(id:number)=>{const i=invoices.map(x=>x.id===id?{...x,status:'Paid' as const,paidDate:new Date().toLocaleDateString('ms-MY')}:x);setInvoices(i);persist(notes,i)};
 const saveProfile=(key:keyof Profile,value:string)=>{const p={...profile,[key]:value};setProfile(p);localStorage.setItem('satu-profile',JSON.stringify(p))};
