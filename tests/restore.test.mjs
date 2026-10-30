@@ -8,3 +8,5 @@ test('failed restore rolls back previous records where storage permits',()=>{con
 test('optional backup fields do not overwrite existing profile or language',()=>{const store=mock();restoreBackupStorage(store,{notes:[],invoices:[]});assert.equal(store.getItem('satu-language'),'ms');assert.equal(store.getItem('satu-profile'),null)});
 
 test('restore boundary rejects invalid data before touching storage',()=>{const store=mock();assert.throws(()=>restoreBackupStorage(store,{notes:[{id:1}],invoices:[]}));assert.equal(store.getItem('satu-notes'),'old-notes');assert.equal(store.getItem('satu-invoices'),'old-invoices')});
+
+test('restoration rejects oversized in-memory backup before writing',()=>{const store=mock();const large={notes:[{id:1,name:'X',phone:'',detail:'x'.repeat(5*1024*1024),status:'Unpaid',amount:1}],invoices:[]};assert.throws(()=>restoreBackupStorage(store,large),/size limit/);assert.equal(store.getItem('satu-notes'),'old-notes')});
