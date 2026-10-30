@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {validBackup,validInvoice,validNote} from '../src/backup.ts';
+const sample=()=>({version:2,lang:'ar',profile:{business:'متجر',owner:'Owner',phone:'',payment:''},notes:[{id:1,name:'Aisyah',amount:25}],invoices:[{id:2,customer:'Ali',amount:40,status:'Unpaid',items:[{id:1,description:'كتاب',qty:2,unitPrice:20}]}]});
+test('backup JSON round trip retains records and Arabic language',()=>{const restored=JSON.parse(JSON.stringify(sample()));assert.equal(validBackup(restored),true);assert.deepEqual(restored,sample())});
+test('malformed nested items are rejected',()=>{const v=sample();v.invoices[0].items[0].qty=-1;assert.equal(validBackup(v),false)});
+test('invalid profile rejects entire restore',()=>{const v=sample();v.profile.owner=undefined;assert.equal(validBackup(v),false)});
+test('unsupported language rejected',()=>{const v=sample();v.lang='xx';assert.equal(validBackup(v),false)});
+test('invalid amount and nonfinite numbers rejected',()=>{assert.equal(validNote({id:1,name:'X',amount:Infinity}),false);assert.equal(validInvoice({id:1,customer:'X',amount:NaN,status:'Paid'}),false)});
+test('missing required collections rejected',()=>{assert.equal(validBackup({notes:[]}),false)});
