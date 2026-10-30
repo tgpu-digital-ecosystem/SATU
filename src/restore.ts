@@ -7,7 +7,7 @@ export const restoreBackupStorage=(storage:Pick<Storage,'getItem'|'setItem'|'rem
  const previous=entries.map(([key])=>[key,storage.getItem(key)] as const);
  try{for(const [key,value] of entries)storage.setItem(key,value)}
  catch(error){
-  for(const [key,value] of previous){try{if(value===null)storage.removeItem(key);else storage.setItem(key,value)}catch{}}
+  for(const [key,value] of previous.reverse()){try{if(value===null)storage.removeItem(key);else storage.setItem(key,value)}catch{}}
   throw error;
  }
 };
