@@ -1,7 +1,7 @@
 import{useMemo,useState}from'react';import{Home,NotebookPen,Calculator,FileText,Palette,Settings,Share2,Plus,CheckCircle2,Download,Upload,Printer,MessageCircle,Mail,HelpCircle}from'lucide-react';import{jsPDF}from'jspdf';
 import {quickCoach} from './business-coach';import satuLogo from './file_00000000f2048211af2c42d6916908f4.png';import satuBanner from './file_000000008fc48207805b894adae81d86.png';
 type Profile={business:string,owner:string,phone:string,payment:string};type Note={id:number,name:string,phone:string,detail:string,amount:number,status:string};type LineItem={id:number,description:string,qty:number,unitPrice:number};type Invoice={id:number,customer:string,phone?:string,description?:string,qty?:number,unitPrice?:number,items?:LineItem[],discount?:number,delivery?:number,paymentMethod?:string,dueDate?:string,amount:number,status:'Unpaid'|'Paid',date:string,paidDate?:string};
-const money=(n:number)=>new Intl.NumberFormat('ms-MY',{style:'currency',currency:'MYR'}).format(n);
+const money=(n:number)=>new Intl.NumberFormat('ms-MY',{style:'currency',currency:'MYR'}).format(Number.isFinite(n)?n:0);
 const seedNotes:Note[]=[{id:1,name:'Aisyah',phone:'012-345 6789',detail:'2 × Kek Batik · Jumaat',amount:50,status:'Belum Bayar'},{id:2,name:'Farah',phone:'',detail:'Gift set × 1',amount:35,status:'Selesai'}];
 const seedInv:Invoice[]=[{id:1,customer:'Aisyah',amount:50,status:'Paid',date:'27 Sep 2026'},{id:2,customer:'Farah',amount:35,status:'Paid',date:'27 Sep 2026'},{id:3,customer:'Nurul',amount:120,status:'Unpaid',date:'27 Sep 2026'}];
 const ms={home:'Utama',notes:'Nota',calc:'Kira',docs:'Dokumen',design:'Reka',welcome:'Urus bisnes lebih mudah.',local:'Rekod anda kekal pada peranti ini.',recent:'Aktiviti terkini'};
