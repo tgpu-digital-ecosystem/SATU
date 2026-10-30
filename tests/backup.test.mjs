@@ -17,3 +17,5 @@ test('backup with nonfinite invoice amount is rejected',()=>{const v=sample();v.
 
 test('future backup versions are rejected to prevent incompatible restores',()=>{const v=sample();v.version=99;assert.equal(validBackup(v),false)});
 test('legacy unversioned backup is accepted when its records are valid',()=>{const v=sample();delete v.version;assert.equal(validBackup(v),true)});
+
+test('shared validator rejects collections exceeding the safety limit',()=>{const v=sample();v.notes=Array.from({length:10001},(_,id)=>({id,name:'X',phone:'',detail:'',status:'Unpaid',amount:1}));assert.equal(validBackup(v),false)});
