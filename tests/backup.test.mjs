@@ -14,3 +14,6 @@ test('invoice with malformed items array is rejected',()=>{const v=sample();v.in
 test('invoice with infinite line item price is rejected',()=>{const v=sample();v.invoices[0].items[0].unitPrice=Infinity;assert.equal(validBackup(v),false)});
 test('backup with null profile is rejected',()=>{const v=sample();v.profile=null;assert.equal(validBackup(v),false)});
 test('backup with nonfinite invoice amount is rejected',()=>{const v=sample();v.invoices[0].amount=Infinity;assert.equal(validBackup(v),false)});
+
+test('future backup versions are rejected to prevent incompatible restores',()=>{const v=sample();v.version=99;assert.equal(validBackup(v),false)});
+test('legacy unversioned backup is accepted when its records are valid',()=>{const v=sample();delete v.version;assert.equal(validBackup(v),true)});
