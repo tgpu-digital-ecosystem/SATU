@@ -1,3 +1,6 @@
+import '@fontsource/noto-kufi-arabic/400.css';
+import '@fontsource/noto-kufi-arabic/600.css';
+import '@fontsource/noto-kufi-arabic/700.css';
 import{useEffect,useMemo,useState}from'react';import{Home,NotebookPen,Calculator,FileText,Palette,Settings,Share2,Plus,CheckCircle2,Download,Upload,Printer,MessageCircle,Mail,HelpCircle}from'lucide-react';import{jsPDF}from'jspdf';
 import Meetings from './Meetings';
 import {MAX_BACKUP_BYTES,MAX_BACKUP_RECORDS,validBackup,validInvoice,validNote,validProfile} from './backup';
