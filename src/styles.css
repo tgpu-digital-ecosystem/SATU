@@ -103,3 +103,15 @@ main{padding:20px 20px 22px}
 .app[dir="rtl"] input[type="number"],.app[dir="rtl"] input[type="date"],.app[dir="rtl"] input[type="tel"]{direction:ltr;text-align:left}
 nav{overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav button{min-width:0;flex:1 0 15%;padding-inline:2px}nav button span{font-size:clamp(9px,2.2vw,12px);white-space:nowrap;overflow-wrap:normal;word-break:normal;line-height:1.2}nav button:nth-child(4) span{font-size:clamp(8px,1.85vw,10px)}
 .header-actions select:focus-visible{outline:3px solid #d5a72f;outline-offset:2px}
+
+
+/* SATU optional meetings module: emerald, mobile-first, RTL-aware */
+.satuMeetingsEntry{width:100%;min-height:54px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#e7f3ec;border:1px solid #b8d9c5;border-radius:14px;color:#0b5d3b;font-weight:800;text-align:start;padding:14px 16px;margin-bottom:16px;cursor:pointer}
+.satuMeetingsEntry:focus-visible,.meetingActions a:focus-visible,.meetingActions button:focus-visible{outline:3px solid #c79a2b;outline-offset:3px}
+.satuMeetings>h1{color:#0b5d3b}.satuMeetings>p{line-height:1.6}
+.satuMeetings .field input{min-width:0;max-width:100%}
+.meetingActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.meetingActions a,.meetingActions button{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border:1px solid #0b5d3b;border-radius:10px;background:white;color:#0b5d3b;text-decoration:none;font-weight:750;cursor:pointer}
+.meetingActions a{background:#0b5d3b;color:white}
+.satuMeetings .card strong,.satuMeetings .card small{overflow-wrap:anywhere}
+@media(max-width:360px){.meetingActions a,.meetingActions button{flex:1 1 auto}}
