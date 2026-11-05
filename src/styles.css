@@ -115,3 +115,9 @@ nav{overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav
 .meetingActions a{background:#0b5d3b;color:white}
 .satuMeetings .card strong,.satuMeetings .card small{overflow-wrap:anywhere}
 @media(max-width:360px){.meetingActions a,.meetingActions button{flex:1 1 auto}}
+
+/* User-selected Noto Kufi Arabic: bundled font, Arabic UI only. */
+.app[dir="rtl"]{font-family:'Noto Kufi Arabic',system-ui,sans-serif}
+.app[dir="rtl"] button,.app[dir="rtl"] input,.app[dir="rtl"] select,.app[dir="rtl"] textarea{font-family:inherit}
+.app[dir="rtl"] h1,.app[dir="rtl"] h2,.app[dir="rtl"] h3{line-height:1.65}
+.app[dir="rtl"] p,.app[dir="rtl"] label,.app[dir="rtl"] button{line-height:1.8}
