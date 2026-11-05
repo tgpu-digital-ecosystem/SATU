@@ -121,3 +121,23 @@ nav{overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav
 .app[dir="rtl"] button,.app[dir="rtl"] input,.app[dir="rtl"] select,.app[dir="rtl"] textarea{font-family:inherit}
 .app[dir="rtl"] h1,.app[dir="rtl"] h2,.app[dir="rtl"] h3{line-height:1.65}
 .app[dir="rtl"] p,.app[dir="rtl"] label,.app[dir="rtl"] button{line-height:1.8}
+
+/* Multi-business homepage integration */
+.satuBusinessWelcome{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px;margin-bottom:18px;border-radius:22px;background:linear-gradient(135deg,#e8f5ed,#fff);border:1px solid #b8d9c5;box-shadow:0 8px 24px #0b5d3b0b}
+.satuBusinessWelcome>div{min-width:0}
+.satuBusinessWelcome span{font-size:11px;font-weight:900;letter-spacing:.08em;color:#0b5d3b}
+.satuBusinessWelcome h2{font-size:clamp(20px,3vw,26px);line-height:1.2;margin:7px 0;color:#084d33;overflow-wrap:anywhere}
+.satuBusinessWelcome p{font-size:13px;line-height:1.55;margin:0;color:#426a55}
+.satuBusinessWelcome button{flex:0 0 auto;border:1px solid #0b5d3b;background:#0b5d3b;color:white;border-radius:12px;padding:12px 14px;font-weight:750;cursor:pointer}
+.satuBusinessWelcome button:focus-visible{outline:3px solid #c79a2b;outline-offset:3px}
+.satuBusinessWelcome{flex-direction:column;align-items:stretch;padding:18px}
+.satuBusinessWelcome button{align-self:flex-start}
+.satuBusinessWelcome{display:none!important}
+.satuBusinessWelcome{text-align:start}
+.satuBusinessWelcome button{text-align:center}
+.satuBusinessWelcome span{letter-spacing:normal}
+.satuBusinessWelcome button:hover{background:#08482f}
+.satuBusinessWelcome{gap:12px;padding:15px}
+.satuBusinessWelcome h2{font-size:20px}
+.satuBusinessWelcome p{font-size:12px}
+.satuBusinessWelcome button{transition:none}
