@@ -103,3 +103,40 @@ main{padding:20px 20px 22px}
 .app[dir="rtl"] input[type="number"],.app[dir="rtl"] input[type="date"],.app[dir="rtl"] input[type="tel"]{direction:ltr;text-align:left}
 nav{overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav button{min-width:0;flex:1 0 15%;padding-inline:2px}nav button span{font-size:clamp(9px,2.2vw,12px);white-space:nowrap;overflow-wrap:normal;word-break:normal;line-height:1.2}nav button:nth-child(4) span{font-size:clamp(8px,1.85vw,10px)}
 .header-actions select:focus-visible{outline:3px solid #d5a72f;outline-offset:2px}
+
+
+/* SATU optional meetings module: emerald, mobile-first, RTL-aware */
+.satuMeetingsEntry{width:100%;min-height:54px;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#e7f3ec;border:1px solid #b8d9c5;border-radius:14px;color:#0b5d3b;font-weight:800;text-align:start;padding:14px 16px;margin-bottom:16px;cursor:pointer}
+.satuMeetingsEntry:focus-visible,.meetingActions a:focus-visible,.meetingActions button:focus-visible{outline:3px solid #c79a2b;outline-offset:3px}
+.satuMeetings>h1{color:#0b5d3b}.satuMeetings>p{line-height:1.6}
+.satuMeetings .field input{min-width:0;max-width:100%}
+.meetingActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.meetingActions a,.meetingActions button{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border:1px solid #0b5d3b;border-radius:10px;background:white;color:#0b5d3b;text-decoration:none;font-weight:750;cursor:pointer}
+.meetingActions a{background:#0b5d3b;color:white}
+.satuMeetings .card strong,.satuMeetings .card small{overflow-wrap:anywhere}
+@media(max-width:360px){.meetingActions a,.meetingActions button{flex:1 1 auto}}
+
+/* User-selected Noto Kufi Arabic: bundled font, Arabic UI only. */
+.app[dir="rtl"]{font-family:'Noto Kufi Arabic',system-ui,sans-serif}
+.app[dir="rtl"] button,.app[dir="rtl"] input,.app[dir="rtl"] select,.app[dir="rtl"] textarea{font-family:inherit}
+.app[dir="rtl"] h1,.app[dir="rtl"] h2,.app[dir="rtl"] h3{line-height:1.65}
+.app[dir="rtl"] p,.app[dir="rtl"] label,.app[dir="rtl"] button{line-height:1.8}
+
+/* Emerald multi-business welcome, scoped to SATU homepage. */
+.satuBusinessWelcome{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px;margin-bottom:18px;border-radius:22px;background:linear-gradient(135deg,#e8f5ed,#fff);border:1px solid #b8d9c5;box-shadow:0 8px 24px #0b5d3b0b;text-align:start}
+.satuBusinessWelcome>div{min-width:0}
+.satuBusinessWelcome span{font-size:11px;font-weight:900;letter-spacing:.08em;color:#0b5d3b}
+.satuBusinessWelcome h2{font-size:clamp(20px,3vw,26px);line-height:1.35;margin:7px 0;color:#084d33;overflow-wrap:anywhere}
+.satuBusinessWelcome p{font-size:13px;line-height:1.6;margin:0;color:#426a55}
+.satuBusinessWelcome button{flex:0 0 auto;border:1px solid #0b5d3b;background:#0b5d3b;color:white;border-radius:12px;padding:12px 14px;font-weight:750;cursor:pointer}
+.satuBusinessWelcome button:focus-visible{outline:3px solid #c79a2b;outline-offset:3px}
+.satuBusinessWelcome button:hover{background:#08482f}
+.app[dir="rtl"] .satuBusinessWelcome span{letter-spacing:normal}
+@media(max-width:600px){.satuBusinessWelcome{flex-direction:column;align-items:stretch;padding:16px;gap:12px}.satuBusinessWelcome button{align-self:flex-start}.satuBusinessWelcome h2{font-size:20px}}
+@media print{.satuBusinessWelcome{display:none!important}}
+
+/* SATU localized welcome banner and mobile header readability */
+.localizedBanner{min-height:260px;border-radius:20px;background:radial-gradient(circle at 90% 5%,#27815b 0,transparent 46%),linear-gradient(135deg,#064b32,#0b6b43);color:#fff;padding:24px;display:flex;flex-direction:column;justify-content:center;gap:12px;overflow:hidden;border:1px solid #b99b48;box-shadow:0 10px 24px #0b5d3b22}
+.localizedBannerBrand{display:flex;align-items:center;gap:12px}.localizedBannerBrand img{width:56px;height:56px;object-fit:contain;border-radius:12px}.localizedBannerBrand strong{font-size:30px;letter-spacing:.02em}.localizedBannerBrand small{font-size:11px;color:#f5d990}.localizedBanner h2{font-size:clamp(24px,6vw,32px);line-height:1.55;margin:0;color:#fff}.localizedBanner p{font-size:14px;line-height:1.8;margin:0;color:#e9f5ed}.localizedBanner>span{font-size:12px;color:#f5d990;font-weight:700}.app[dir="rtl"] .localizedBanner{text-align:right;font-family:"Noto Kufi Arabic",sans-serif}
+.brandlockup{min-width:0;flex:1}.brandlockup>div{min-width:0}.brandSubtitle{display:block;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.7!important;max-width:none!important;font-size:clamp(10px,2.4vw,12px)!important}.app[dir="rtl"] .brandSubtitle{font-family:"Noto Kufi Arabic",sans-serif}.header-actions{flex-shrink:0}
+@media(max-width:390px){header{padding:12px;gap:6px}.brandlockup{gap:7px}.brandlockup .brandmark{width:42px;height:42px;object-fit:contain}.localizedBanner{min-height:235px;padding:20px}.header-actions select{max-width:84px}}

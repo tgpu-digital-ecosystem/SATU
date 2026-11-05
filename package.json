@@ -18,7 +18,8 @@
     "lucide-react": "latest",
     "jspdf": "latest",
     "maplibre-gl": "latest",
-    "pmtiles": "latest"
+    "pmtiles": "latest",
+    "@fontsource/noto-kufi-arabic": "latest"
   },
   "devDependencies": {
     "@types/react": "latest",
