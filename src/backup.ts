@@ -3,7 +3,9 @@ export type BackupNote={id:number;name:string;amount:number;phone:string;detail:
 export type BackupItem={id:number;description:string;qty:number;unitPrice:number};
 export type BackupInvoice={id:number;customer:string;amount:number;status:'Paid'|'Unpaid';items?:BackupItem[];date:string};
 export type BackupProfile={business:string;owner:string;phone:string;payment:string};
-export type BackupData={notes:BackupNote[];invoices:BackupInvoice[];profile?:BackupProfile;lang?:'ms'|'en'|'ar';version?:number};
+export type BackupMeeting={id:string;title:string;when:string;link:string;notes:string};
+export const validMeeting=(v:unknown):v is BackupMeeting=>record(v)&&typeof v.id==='string'&&v.id.length>0&&v.id.length<=150&&typeof v.title==='string'&&v.title.length>0&&v.title.length<=150&&typeof v.when==='string'&&Number.isFinite(Date.parse(v.when))&&typeof v.link==='string'&&v.link.length<=1000&&(v.link===''||(()=>{try{const u=new URL(v.link as string);return u.protocol==='https:'&&u.hostname.includes('.')&&!u.username&&!u.password}catch{return false}})())&&typeof v.notes==='string'&&v.notes.length<=2000;
+export type BackupData={notes:BackupNote[];invoices:BackupInvoice[];profile?:BackupProfile;lang?:'ms'|'en'|'ar';version?:number;meetings?:BackupMeeting[]};
 const record=(v:unknown):v is Record<string,unknown>=>v!==null&&typeof v==='object'&&!Array.isArray(v);
 const finite=(v:unknown):v is number=>typeof v==='number'&&Number.isFinite(v);
 const validItem=(v:unknown):v is BackupItem=>record(v)&&finite(v.id)&&typeof v.description==='string'&&finite(v.qty)&&v.qty>=1&&finite(v.unitPrice)&&v.unitPrice>=0;
@@ -12,4 +14,4 @@ export const validInvoice=(v:unknown):v is BackupInvoice=>record(v)&&finite(v.id
 export const validProfile=(v:unknown):v is BackupProfile=>record(v)&&['business','owner','phone','payment'].every(k=>typeof v[k]==='string');
 export const MAX_BACKUP_BYTES=5*1024*1024;
 export const MAX_BACKUP_RECORDS=10000;
-export const validBackup=(v:unknown):v is BackupData=>record(v)&&(!('version'in v)||v.version===1||v.version===2)&&Array.isArray(v.notes)&&Array.isArray(v.invoices)&&v.notes.length+v.invoices.length<=MAX_BACKUP_RECORDS&&v.notes.every(validNote)&&v.invoices.every(validInvoice)&&(!('profile'in v)||validProfile(v.profile))&&(!('lang'in v)||v.lang==='ms'||v.lang==='en'||v.lang==='ar');
+export const validBackup=(v:unknown):v is BackupData=>record(v)&&(!('version'in v)||v.version===1||v.version===2||v.version===3)&&Array.isArray(v.notes)&&Array.isArray(v.invoices)&&v.notes.length+v.invoices.length<=MAX_BACKUP_RECORDS&&v.notes.every(validNote)&&v.invoices.every(validInvoice)&&(!('profile'in v)||validProfile(v.profile))&&(!('meetings'in v)||Array.isArray(v.meetings)&&v.meetings.length<=200&&v.meetings.every(validMeeting)&&new Set(v.meetings.map((m:BackupMeeting)=>m.id)).size===v.meetings.length)&&(!('lang'in v)||v.lang==='ms'||v.lang==='en'||v.lang==='ar');
