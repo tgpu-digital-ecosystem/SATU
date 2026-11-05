@@ -1,4 +1,4 @@
-const VERSION='tgpu-core-v1.0';
+const VERSION='tgpu-core-v1.1';
 const SHELL_CACHE=`tgpu-shell-${VERSION}`;
 const RUNTIME_CACHE=`tgpu-runtime-${VERSION}`;
 const MAP_PACK_PREFIX='teman-map-pack-';
@@ -48,6 +48,25 @@ self.addEventListener('fetch',event=>{
   }
 
   if(url.origin===self.location.origin){
+    // Always check the network for application assets so deployments are not
+    // hidden behind an older cached JavaScript/CSS bundle. Preserve an offline
+    // fallback when the network is unavailable.
+    const isAppAsset = /\\.(?:js|css|html)$/i.test(url.pathname) || url.pathname==='/sw.js';
+    if(isAppAsset){
+      event.respondWith((async()=>{
+        try{
+          const response=await fetch(request,{cache:'no-store'});
+          if(response.ok){
+            const cache=await caches.open(RUNTIME_CACHE);
+            await cache.put(request,response.clone());
+          }
+          return response;
+        }catch{
+          return (await caches.match(request)) || Response.error();
+        }
+      })());
+      return;
+    }
     event.respondWith(
       caches.match(request).then(cached=>{
         const network=fetch(request).then(response=>{
