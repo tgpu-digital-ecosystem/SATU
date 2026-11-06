@@ -140,3 +140,13 @@ nav{overflow-x:auto;scrollbar-width:none}nav::-webkit-scrollbar{display:none}nav
 .localizedBannerBrand{display:flex;align-items:center;gap:12px}.localizedBannerBrand img{width:56px;height:56px;object-fit:contain;border-radius:12px}.localizedBannerBrand strong{font-size:30px;letter-spacing:.02em}.localizedBannerBrand small{font-size:11px;color:#f5d990}.localizedBanner h2{font-size:clamp(24px,6vw,32px);line-height:1.55;margin:0;color:#fff}.localizedBanner p{font-size:14px;line-height:1.8;margin:0;color:#e9f5ed}.localizedBanner>span{font-size:12px;color:#f5d990;font-weight:700}.app[dir="rtl"] .localizedBanner{text-align:right;font-family:"Noto Kufi Arabic",sans-serif}
 .brandlockup{min-width:0;flex:1}.brandlockup>div{min-width:0}.brandSubtitle{display:block;white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.7!important;max-width:none!important;font-size:clamp(10px,2.4vw,12px)!important}.app[dir="rtl"] .brandSubtitle{font-family:"Noto Kufi Arabic",sans-serif}.header-actions{flex-shrink:0}
 @media(max-width:390px){header{padding:12px;gap:6px}.brandlockup{gap:7px}.brandlockup .brandmark{width:42px;height:42px;object-fit:contain}.localizedBanner{min-height:235px;padding:20px}.header-actions select{max-width:84px}}
+
+/* iOS standalone/browser safe-area: keep SATU branding below status bar. */
+.app>header{padding-top:max(58px,calc(env(safe-area-inset-top,0px) + 18px));align-items:center;gap:10px}
+.app>header .brandlockup{min-width:0;display:flex;align-items:center;gap:10px}
+.app>header .brandlockup>div{min-width:0}
+.app>header .satubrand{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px}
+.app>header .brandSubtitle{line-height:1.35!important;overflow-wrap:normal}
+.app>header .header-actions{align-self:center}
+@media(max-width:390px){.app>header{padding-top:max(58px,calc(env(safe-area-inset-top,0px) + 18px));padding-inline:12px}.app>header .brandlockup{gap:7px}}
+@media print{.app>header{padding-top:0}}
