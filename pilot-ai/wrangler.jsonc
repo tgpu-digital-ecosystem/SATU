@@ -1,0 +1,18 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "tgpu-satu-ai-pilot",
+  "main": "pilot-ai/worker.ts",
+  "compatibility_date": "2026-10-19",
+  "ai": {
+    "binding": "AI"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "AI_LIMITS",
+      "id": "REPLACE_WITH_PRIVATE_PILOT_KV_NAMESPACE_ID"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}
